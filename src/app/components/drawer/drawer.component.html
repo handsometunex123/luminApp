@@ -1,0 +1,11 @@
+<mat-sidenav-container class='app-drawer-container' fullscreen>
+    <mat-sidenav #sidenav mode="over" class="side-nav" position="end">
+      <app-side-nav ></app-side-nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <!-- <button mat-button (click)="sidenav.toggle()">Main content</button> -->
+      <app-main-page (open)="navOpen($event)"></app-main-page>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+  

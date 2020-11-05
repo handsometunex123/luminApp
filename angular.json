@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "luminApp"
+    }
+  },
+  "defaultProject": "luminApp",
+  "cli": {
+    "analytics": false
+  }
 }
