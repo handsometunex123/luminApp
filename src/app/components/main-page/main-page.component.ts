@@ -25,7 +25,8 @@ export class MainPageComponent implements OnInit {
   }
   @Output() open: EventEmitter<boolean> = new EventEmitter()
 
-  clickMenu(product: Product) {
+  /** This method add new item to a behaviour subject / item list then opens the side menu **/
+  addToCart(product: Product) {
     console.log(product);
     this.pageServ.products$.next(product)
     this.open.emit(true);
@@ -33,7 +34,7 @@ export class MainPageComponent implements OnInit {
 
 
 
-
+/** This calls the API then returns the data */
   callApi() {
     this.error = "";
     this.apollo
@@ -59,16 +60,6 @@ export class MainPageComponent implements OnInit {
       }
       )
       
-      
-      
-      // ((result: any) => {
-      //   // this.rates = result?.data?.rates;
-      //   // this.loading = result.loading;
-      //   // this.error = result.error;
-
-      //   this.allProducts = result?.data?.products;
-      //   console.log(this.allProducts);
-      // });
 
   }
 

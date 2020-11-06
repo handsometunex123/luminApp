@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   title: string = "Dashboard";
 
   @Output()
-  open: EventEmitter<boolean> = new EventEmitter()
+  open: EventEmitter<boolean> = new EventEmitter();
 
   ngOnInit(): void {
   }

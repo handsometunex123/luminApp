@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Apollo, gql } from 'apollo-angular';
+import { BehaviorSubject, of, Observable } from 'rxjs';
 import { Product } from '../products';
 
 @Injectable({
@@ -9,10 +10,7 @@ import { Product } from '../products';
 export class MainpageDataService {
   public products$ = new BehaviorSubject<Product>(null);
   productsSource$ = this.products$.asObservable();
-  constructor() { }
+  currency: 'USD';
+  constructor(private apollo: Apollo,) { }
 
-
-  // AddToSideBar(item): void {
-  //   this.products$.next(item);
-  // }
 }

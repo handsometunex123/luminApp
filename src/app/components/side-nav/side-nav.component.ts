@@ -14,7 +14,6 @@ import { MatSelectChange } from '@angular/material/select';
 export class SideNavComponent implements OnInit {
   itemCount = 1;
   newItem: Product;
-  @ViewChild('sidenav') public sidenav: MatSidenav;
   currencyControl = new FormControl('USD');
   currency = ['USD', 'NGN'];
   selectedProduct: Product[] = [];
@@ -26,37 +25,40 @@ export class SideNavComponent implements OnInit {
     this.getSideProducts();
   }
 
-
+/** Method gets the currency selected */
   getSelect($event: MatSelectChange){
     console.log($event.value);
     this.sideServ.currency$.next($event.value);
   }
   
-
+/** This method gets the selected product */
   getSideProducts() {
     this.mainService.productsSource$.subscribe(res => {
       console.log(res);
       if (res) {
         const itemExist = this.selectedProduct.find(x => x.id == res.id);
+        /** Checks if the item exist then increase the qty else push the item to the Array */
         if (itemExist) {
           itemExist.count++;
         } else {
           this.newItem = { ...res };
+          /** The array is manipulated the count is added to each to cater for the different qtys */
           this.newItem.count = 1;
           this.selectedProduct.push(this.newItem);
         }
         console.log(this.selectedProduct);
       }
-
-
     })
   }
 
+  
+ /**This triggers when you click the - button 
+  id of the selected item was passed */
   reduceCount(id) {
     const itemExist = this.selectedProduct.find(x => x.id == id);
     const itemIndex = this.selectedProduct.indexOf(itemExist);
-    itemExist.count--;
     console.log(this.selectedProduct);
+    /** check if its less than one the removes the item from the array of products */
     if(itemExist.count < 1 ){
       this.selectedProduct.splice(itemIndex, 1);
     }
@@ -64,6 +66,7 @@ export class SideNavComponent implements OnInit {
 
   }
 
+  /**Removes the item by ID */
   removeItem(id){
     const itemExist = this.selectedProduct.find(x => x.id == id);
     const itemIndex = this.selectedProduct.indexOf(itemExist);
@@ -73,11 +76,15 @@ export class SideNavComponent implements OnInit {
 
   }
 
+   /**This triggers when you click the + button */
+ /** id of the selected item was passed */
   increaseCount(id) {
     const addItem = this.selectedProduct.find(x => x.id == id);
-    addItem.count++;
+    addItem.count += 1;
   }
 
+
+   /**sums the whole product amount together */
   getAllItem(allItems): number{
     console.log(allItems);
     // return allItems.reduce((a, b) => ({x: a.price * b.count}));

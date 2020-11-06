@@ -12,7 +12,7 @@
         </mat-select>
     </mat-form-field>
 
-    <div *ngIf="selectedProduct.length > 0">
+    <div *ngIf="selectedProduct.length > 0" style="margin-top: 0;">
         <div class="side-items" *ngFor="let product of selectedProduct">
             <span class="cancel" (click)="removeItem(product.id)">&times;</span>
             <div class="top-side">
@@ -26,11 +26,10 @@
                     <mat-icon style="margin-bottom: 15px; cursor: pointer;" (click)="reduceCount(product.id)">minimize
                     </mat-icon>
                     <h2 style="margin-bottom: 0;">{{product.count}}</h2>
-                    <mat-icon (click)="increaseCount(product.id)" style="cursor: pointer;"
-                        (click)="increaseCount(product.id)">add</mat-icon>
+                    <mat-icon style="cursor: pointer;" (click)="increaseCount(product.id)">add</mat-icon>
                 </div>
 
-                <h3 style="margin-bottom: 0;">{{product.price * product.count}}</h3>
+                <h3 style="margin-bottom: 0;">${{product.price * product.count}}</h3>
             </div>
 
         </div>
@@ -39,7 +38,7 @@
             <hr>
             <div class="subtotal">
                 <h3 style="margin-bottom: 0">Subtotal</h3>
-                <h3 style="margin-bottom: 0">{{getAllItem(this.selectedProduct)}}</h3>
+                <h3 style="margin-bottom: 0">${{getAllItem(this.selectedProduct)}}</h3>
             </div>
         </div>
     </div>

@@ -1,15 +1,12 @@
 <div *ngIf="loading">
     Loading...
 </div>
-
 <div>{{ error }}</div>
-
-
 <div class="cards" *ngIf="allProducts">
     <div class="card" *ngFor="let product of allProducts">
         <img [src]="product.image_url" alt="" class="image">
         <h3>{{product.title}}</h3>
-        <h2>{{product.price}}</h2>
-        <button class="button" (click)="clickMenu(product)">Add to cart</button>
+        <h2>${{product.price}}</h2>
+        <button class="button" (click)="addToCart(product)">Add to cart</button>
     </div>
 </div>
