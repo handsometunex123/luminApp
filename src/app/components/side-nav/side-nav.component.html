@@ -3,7 +3,12 @@
         &lt;
     </span> -->
     <h4 style="text-align: center; margin-bottom: 0;">YOUR CART</h4>
-    <mat-form-field appearance="outline" style="margin-top: 10px;" [style.width.px]="100">
+    <hr>
+    <div class="empty-cart" *ngIf="selectedProduct.length === 0">
+        <mat-icon style="transform: scale(5); margin-bottom: 40px;">add_shopping_cart</mat-icon>
+        <h3 style="margin-bottom: 0; text-align: center;">{{emptyCartMessage}}</h3>
+    </div>
+    <mat-form-field appearance="outline" style="margin-top: 10px;" [style.width.px]="100" *ngIf="selectedProduct.length > 0">
         <!-- <mat-label>Currency</mat-label> -->
         <mat-select [formControl]="currencyControl" (selectionChange)="getSelect($event)">
             <mat-option *ngFor="let curr of currency" [value]="curr">

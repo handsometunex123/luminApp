@@ -5,7 +5,7 @@
 <div class="cards" *ngIf="allProducts">
     <div class="card" *ngFor="let product of allProducts">
         <img [src]="product.image_url" alt="" class="image">
-        <h3>{{product.title}}</h3>
+        <h3 style="text-align: center;">{{product.title}}</h3>
         <h2>${{product.price}}</h2>
         <button class="button" (click)="addToCart(product)">Add to cart</button>
     </div>

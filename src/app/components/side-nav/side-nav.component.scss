@@ -4,6 +4,14 @@
     padding-right: 20px;
     position: relative;
 
+    .empty-cart{
+        display: flex; 
+        flex-direction: column;
+        align-items: center; 
+        margin-top: 50%; 
+        justify-content: center;
+    }
+
     .main-close{
         position: absolute;
         top: 10px;
@@ -32,6 +40,8 @@
             // justify-content: space-between;
             margin-bottom: 10px;
         }
+
+       
 
         .right-side{
             display: flex;

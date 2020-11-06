@@ -69,7 +69,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
+  margin: 0 !important;
 }
 
 button:focus {
@@ -100,14 +100,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-// .portal-container{
-//     background-color: grey;
-//     display: grid;
-// }
-
-.portal-container{
- 
-}
 
 .card {
   display: flex;
@@ -132,7 +124,7 @@ body {
 
 
 .button {
-  background-color: #4CAF50;
+  background-color: #616161;
   border: none;
   color: white;
   padding: 15px 32px;

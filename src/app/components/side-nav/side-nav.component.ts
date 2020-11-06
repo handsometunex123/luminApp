@@ -16,6 +16,7 @@ export class SideNavComponent implements OnInit {
   newItem: Product;
   currencyControl = new FormControl('USD');
   currency = ['USD', 'NGN'];
+  emptyCartMessage = 'Your cart is empty'
   selectedProduct: Product[] = [];
   constructor(public mainService: MainpageDataService,
     public sideServ: SidenavDataService
@@ -46,7 +47,6 @@ export class SideNavComponent implements OnInit {
           this.newItem.count = 1;
           this.selectedProduct.push(this.newItem);
         }
-        console.log(this.selectedProduct);
       }
     })
   }
@@ -57,7 +57,7 @@ export class SideNavComponent implements OnInit {
   reduceCount(id) {
     const itemExist = this.selectedProduct.find(x => x.id == id);
     const itemIndex = this.selectedProduct.indexOf(itemExist);
-    console.log(this.selectedProduct);
+    itemExist.count--;
     /** check if its less than one the removes the item from the array of products */
     if(itemExist.count < 1 ){
       this.selectedProduct.splice(itemIndex, 1);
@@ -80,15 +80,12 @@ export class SideNavComponent implements OnInit {
  /** id of the selected item was passed */
   increaseCount(id) {
     const addItem = this.selectedProduct.find(x => x.id == id);
-    addItem.count += 1;
+    addItem.count++;
   }
 
 
    /**sums the whole product amount together */
   getAllItem(allItems): number{
-    console.log(allItems);
-    // return allItems.reduce((a, b) => ({x: a.price * b.count}));
-
     return allItems.reduce(function (acc, obj) { return acc + (obj.price * obj.count) }, 0); // 7
   }
 
